@@ -22,7 +22,7 @@ ROOT_PARTITION_LINE=$(echo "$PARTITION_TABLE" | grep -e "^2:")
 LAST_ROOT_PARTITION_BYTE=$(echo "$ROOT_PARTITION_LINE" | sed 's/B//g' | cut -d ":" -f 3)
 
 FIRST_BACKINGFILES_PARTITION_BYTE="$(( $LAST_ROOT_PARTITION_BYTE + 1 ))"
-LAST_BACKINGFILES_PARTITION_DESIRED_BYTE="$(( $DISK_SIZE - (100 * (2 ** 20)) - 1))"
+LAST_BACKINGFILES_PARTITION_DESIRED_BYTE="$(( $DISK_SIZE - (1000 * (2 ** 20)) - 1))"
 
 ORIGINAL_DISK_IDENTIFIER=$( fdisk -l /dev/mmcblk0 | grep -e "^Disk identifier" | sed "s/Disk identifier: 0x//" )
 
